@@ -10,7 +10,7 @@
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #dfedf5; color: #333; }
         
         header { background: #484848; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
-        nav { max-width: 1200px; margin: 0 auto; padding: 0.5rem 2rem 0.5rem 1rem; display: flex; justify-content: space-between; align-items: center; }
+        nav { max-width: 1200px; margin: 0 auto; padding: 0.5rem 2rem 0.5rem 1rem; display: flex; justify-content: space-between; align-items: center; position: relative; }
         .logo { display: flex; align-items: center; margin-right: auto; margin-left: 0; cursor: pointer; text-decoration: none; }
         .logo:hover { opacity: 0.8; transition: opacity 0.3s; }
         .logo img { height: 40px; width: auto; display: block; }
@@ -18,6 +18,24 @@
         .nav-links { display: flex; gap: 2rem; list-style: none; }
         .nav-links a { text-decoration: none; color: #DFEDF5; font-weight: 600; transition: color 0.3s; }
         .nav-links a:hover { color: #FFFFFF; }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 101;
+        }
+        .mobile-menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: #DFEDF5;
+            margin: 5px 0;
+            transition: 0.3s;
+        }
        
         .contact-btn {
     background: #427AA3;
@@ -89,129 +107,179 @@
         footer { background: #427AA3; color: white; padding: 3rem 2rem; text-align: center; }
         footer p { opacity: 0.9; }
         
-        @media (max-width: 768px) {
-            /* Header and Navigation */
-            header { width: 100%; }
-            nav {
-                padding: 0.75rem 1rem;
+        /* Tablet and below - 900px breakpoint */
+        @media (max-width: 900px) {
+            section { padding: 3rem 1.5rem; }
+            h2 { font-size: 2rem; margin-bottom: 2rem; }
+
+            .hero { min-height: 600px; background-position: center -150px; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1.2rem; }
+
+            /* Stack columns */
+            .features, .roles, .company-info {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            /* Show mobile menu toggle */
+            .mobile-menu-toggle { display: block; }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #484848;
+                flex-direction: column;
+                gap: 0;
+                padding: 1rem 0;
+                display: none;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active { display: flex; }
+
+            .nav-links li {
                 width: 100%;
-                max-width: 100%;
+                text-align: center;
             }
-            .nav-links { display: none; }
-            .logo {
-                max-width: 100%;
-                overflow: hidden;
+
+            .nav-links a {
+                display: block;
+                padding: 1rem 2rem;
+                width: 100%;
             }
-            .logo img {
-                height: 30px;
+
+            .contact-btn {
+                margin: 0.5rem 2rem;
+                display: inline-block;
                 width: auto;
-                max-width: 100%;
             }
+        }
+
+        /* Mobile - 768px breakpoint */
+        @media (max-width: 768px) {
+            /* Navigation */
+            nav { padding: 1rem; }
+            .logo img { height: 35px; }
 
             /* Hero Section */
             .hero {
-                min-height: 450px;
-                background-position: center -80px;
-                padding-bottom: 2rem;
-                width: 100%;
+                min-height: 500px;
+                background-position: center -100px;
+                padding: 2rem 1rem;
             }
-            .hero-content {
-                padding: 1rem;
+            .hero-content { padding: 1.5rem 1rem; }
+            .hero h1 {
+                font-size: 1.75rem;
+                line-height: 1.3;
+                margin-bottom: 1rem;
+            }
+            .hero p { font-size: 1.05rem; margin-bottom: 1.5rem; }
+
+            /* Buttons - full width on mobile */
+            .btn {
                 width: 100%;
                 max-width: 100%;
-            }
-            .hero h1 {
-                font-size: 1.5rem;
-                line-height: 1.4;
-                margin-bottom: 1rem;
-                word-wrap: break-word;
-            }
-            .hero p {
-                font-size: 1rem;
-                margin-bottom: 1.5rem;
-                line-height: 1.5;
-            }
-
-            /* Buttons */
-            .btn {
-                padding: 0.9rem 1.5rem;
-                font-size: 1rem;
                 display: block;
-                margin: 0.5rem auto;
-                text-align: center;
-                max-width: 280px;
+                margin: 0.5rem 0;
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
             }
             .btn-primary { margin-right: 0; }
 
             /* Sections */
-            section {
-                padding: 2.5rem 1rem;
-                width: 100%;
-                overflow-x: hidden;
-            }
-            .section-content {
-                max-width: 100%;
-                overflow-x: hidden;
-            }
+            section { padding: 2rem 1rem; }
+            .section-content { padding: 0; }
             h2 {
-                font-size: 1.6rem;
+                font-size: 1.75rem;
                 margin-bottom: 1.5rem;
-                word-wrap: break-word;
-                padding: 0 0.5rem;
+                padding: 0;
             }
 
-            /* Mission Text */
-            .mission-text { font-size: 1.05rem; padding: 0 0.5rem; }
-
-            /* Company Info Grid */
-            .company-info { grid-template-columns: 1fr; gap: 1.5rem; }
-            .company-block { padding: 1.5rem; }
-            .company-block h3 { font-size: 1.3rem; }
-
-            /* Features Grid */
-            .features { grid-template-columns: 1fr; gap: 1.5rem; }
-            .feature { padding: 1.5rem; }
-            .feature h3 { font-size: 1.3rem; }
-
-            /* Roles Grid */
-            .roles { grid-template-columns: 1fr; gap: 1.5rem; }
-            .role { padding: 1.5rem; }
-            .role h3 { font-size: 1.5rem; }
-
-            /* Forms */
-            form {
-                padding: 1.5rem 1rem;
-                max-width: 100%;
-                margin: 0 auto;
-            }
-            .form-group {
-                margin-bottom: 1.25rem;
-            }
-            label {
-                font-size: 0.95rem;
-            }
-            input, textarea {
-                padding: 0.8rem;
+            /* Text blocks */
+            .mission-text {
                 font-size: 1rem;
+                padding: 0;
+                line-height: 1.6;
+            }
+
+            /* Grid items */
+            .feature, .role, .company-block {
+                padding: 1.5rem;
+            }
+            .feature h3, .company-block h3 { font-size: 1.25rem; }
+            .role h3 { font-size: 1.4rem; }
+
+            /* Forms - full width inputs */
+            form {
+                padding: 2rem 1.5rem;
                 width: 100%;
                 max-width: 100%;
             }
+            input, textarea, button[type="submit"] {
+                width: 100%;
+                font-size: 1rem;
+                padding: 0.9rem;
+            }
 
-            /* Calendly Widget */
+            /* Calendly */
             .calendly-inline-widget {
-                margin: 1.5rem 0;
-                height: 600px !important;
+                height: 650px !important;
                 width: 100% !important;
-                min-width: 100% !important;
+                margin: 1rem 0;
             }
             .intro-call-section p {
                 font-size: 1rem;
-                padding: 0 1rem;
+                padding: 0;
                 line-height: 1.6;
             }
 
             /* Footer */
-            footer { padding: 2rem 1rem; font-size: 0.9rem; }
+            footer {
+                padding: 2rem 1rem;
+                font-size: 0.9rem;
+            }
+            footer p { margin: 0.5rem 0; }
+        }
+
+        /* Small mobile - 480px breakpoint */
+        @media (max-width: 480px) {
+            nav { padding: 0.75rem; }
+            .logo img { height: 30px; }
+
+            .hero {
+                min-height: 400px;
+                background-position: center -60px;
+                padding: 1.5rem 0.75rem;
+            }
+            .hero-content { padding: 1rem 0.75rem; }
+            .hero h1 {
+                font-size: 1.4rem;
+                line-height: 1.3;
+            }
+            .hero p { font-size: 0.95rem; }
+
+            section { padding: 1.5rem 0.75rem; }
+            h2 { font-size: 1.5rem; margin-bottom: 1.25rem; }
+
+            .btn {
+                padding: 0.85rem 1.25rem;
+                font-size: 0.95rem;
+            }
+
+            .feature, .role, .company-block {
+                padding: 1.25rem;
+            }
+
+            form { padding: 1.5rem 1rem; }
+
+            .calendly-inline-widget {
+                height: 550px !important;
+            }
+
+            footer { padding: 1.5rem 0.75rem; }
         }
     </style>
 </head>
@@ -222,13 +290,18 @@
                 <img src="mikelogo.png" alt="Clearview Sales Company">
                 <span class="logo-text">CLEARVIEW SALES COMPANY</span>
             </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#company">Company</a></li>
-    <li><a href="#roles">Careers</a></li>
-    <li><a href="#apply">Apply</a></li>
-    <li><a href="#apply" class="contact-btn">Contact</a></li>
-</ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#company">Company</a></li>
+                <li><a href="#roles">Careers</a></li>
+                <li><a href="#apply">Apply</a></li>
+                <li><a href="#apply" class="contact-btn">Contact</a></li>
+            </ul>
         </nav>
     </header>
 
@@ -355,5 +428,40 @@ We handle the travel, training, and logistics so our reps can focus on doing the
 
     <!-- Calendly widget script -->
     <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+    <!-- Mobile menu toggle script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    this.classList.toggle('active');
+                });
+
+                // Close menu when clicking a link
+                const links = navLinks.querySelectorAll('a');
+                links.forEach(link => {
+                    link.addEventListener('click', function() {
+                        navLinks.classList.remove('active');
+                        menuToggle.classList.remove('active');
+                    });
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    const isClickInsideNav = navLinks.contains(event.target);
+                    const isClickOnToggle = menuToggle.contains(event.target);
+
+                    if (!isClickInsideNav && !isClickOnToggle && navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        menuToggle.classList.remove('active');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
