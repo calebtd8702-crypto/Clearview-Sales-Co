@@ -81,7 +81,7 @@
         .intro-call-section { text-align: center; }
         .intro-call-section h3 { color: #427AA3; font-size: 1.5rem; margin-bottom: 1rem; font-weight: 600; }
         .intro-call-section p { max-width: 800px; margin: 0 auto 2rem; color: #555; line-height: 1.8; font-size: 1.1rem; }
-        .calendar-placeholder { background: white; border: 2px solid #427AA3; border-radius: 12px; padding: 4rem 2rem; margin: 2rem auto; max-width: 700px; text-align: center; color: #427AA3; font-size: 1.2rem; font-weight: 600; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .calendly-inline-widget { margin: 2rem auto; max-width: 900px; }
         .request-call-text { font-size: 1.1rem; color: #555; margin: 2rem 0 1rem; font-weight: 500; }
         .confirmation-note { font-size: 0.95rem; color: #6B7280; margin-top: 1.5rem; font-style: italic; }
 
@@ -211,10 +211,8 @@ We handle the travel, training, and logistics so our reps can focus on doing the
             <h2>Schedule Your Intro Call</h2>
             <p>Use the calendar below to book a short introductory call with our hiring team. During this 15-minute conversation, we'll review the position details, travel expectations, and commission structure.</p>
 
-            <!-- Calendly embed placeholder -->
-            <div class="calendar-placeholder">
-                📅 Calendar Scheduling Widget (Calendly will be embedded here)
-            </div>
+            <!-- Calendly inline widget begin -->
+            <div class="calendly-inline-widget" data-url="https://calendly.com/calebtd8702/intro-call" style="min-width:320px;height:700px;"></div>
 
             <p class="request-call-text">If you don't see a time that works for you, request a call instead.</p>
 
@@ -259,5 +257,8 @@ We handle the travel, training, and logistics so our reps can focus on doing the
 </p>
 
     </footer>
+
+    <!-- Calendly widget script -->
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </body>
 </html>
