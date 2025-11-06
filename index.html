@@ -77,7 +77,14 @@
         input, textarea { width: 100%; padding: 0.9rem; border: 2px solid #e5e7eb; border-radius: 8px; background: white; color: #333; }
         input::placeholder, textarea::placeholder { color: #9ca3af; }
         input:focus, textarea:focus { outline: none; border-color: #427AA3; }
-        
+
+        .intro-call-section { text-align: center; }
+        .intro-call-section h3 { color: #427AA3; font-size: 1.5rem; margin-bottom: 1rem; font-weight: 600; }
+        .intro-call-section p { max-width: 800px; margin: 0 auto 2rem; color: #555; line-height: 1.8; font-size: 1.1rem; }
+        .calendar-placeholder { background: white; border: 2px solid #427AA3; border-radius: 12px; padding: 4rem 2rem; margin: 2rem auto; max-width: 700px; text-align: center; color: #427AA3; font-size: 1.2rem; font-weight: 600; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .request-call-text { font-size: 1.1rem; color: #555; margin: 2rem 0 1rem; font-weight: 500; }
+        .confirmation-note { font-size: 0.95rem; color: #6B7280; margin-top: 1.5rem; font-style: italic; }
+
         footer { background: #427AA3; color: white; padding: 3rem 2rem; text-align: center; }
         footer p { opacity: 0.9; }
         
@@ -199,9 +206,19 @@ We handle the travel, training, and logistics so our reps can focus on doing the
         </div>
     </section>
 
-    <section id="apply" class="bg-gray">
+    <section id="apply" class="bg-gray intro-call-section">
         <div class="section-content">
-            <h2>Quick Apply</h2>
+            <h2>Schedule Your Intro Call</h2>
+            <h3>We'd love to meet you and share what makes Clear View Sales Co. different.</h3>
+            <p>During this quick 15-minute conversation, we'll walk you through what it's like to work on our traveling sales teams — including how travel and lodging work, what commissions look like, and what kind of people succeed here.</p>
+
+            <!-- Calendly embed placeholder -->
+            <div class="calendar-placeholder">
+                📅 Calendar Scheduling Widget (Calendly will be embedded here)
+            </div>
+
+            <p class="request-call-text">Don't see a time that works for you? Request a call instead.</p>
+
             <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
                 <div class="form-group">
                     <label>Full Name *</label>
@@ -212,19 +229,17 @@ We handle the travel, training, and logistics so our reps can focus on doing the
                     <input type="email" name="email" required>
                 </div>
                 <div class="form-group">
-                    <label>Phone *</label>
+                    <label>Phone Number *</label>
                     <input type="tel" name="phone" required>
                 </div>
                 <div class="form-group">
-                    <label>Home City/State</label>
-                    <input type="text" name="location">
+                    <label>Message</label>
+                    <textarea name="message" rows="4"></textarea>
                 </div>
-                <div class="form-group">
-                    <label>Notes</label>
-                    <textarea name="notes" rows="4"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; text-align: center;">Submit Application</button>
+                <button type="submit" class="btn btn-primary" style="width: 100%; text-align: center;">Request a Call</button>
             </form>
+
+            <p class="confirmation-note">We'll confirm your time by text or email shortly after you book.</p>
         </div>
     </section>
 
