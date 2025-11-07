@@ -197,6 +197,62 @@
 
         footer { background: #427AA3; color: white; padding: 3rem 2rem; text-align: center; }
         footer p { opacity: 0.9; }
+
+        /* Testimonial Section */
+        .apply-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .testimonial-sidebar {
+            background: #DFEDF5;
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .testimonial-content {
+            max-width: 100%;
+        }
+
+        .testimonial-quote {
+            font-size: 1.15rem;
+            font-style: italic;
+            color: #484848;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .testimonial-quote::before {
+            content: '"';
+            font-size: 3rem;
+            color: #427AA3;
+            opacity: 0.3;
+            position: absolute;
+            top: -1.5rem;
+            left: -0.5rem;
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-author {
+            font-size: 0.95rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .testimonial-author strong {
+            color: #427AA3;
+            font-weight: 600;
+        }
         
         /* ===================================
            RESPONSIVE: HEADER & HERO ONLY
@@ -287,6 +343,15 @@
             .hero h1,
             .hero p {
                 display: none;
+            }
+
+            /* Apply Section - Stack testimonial on mobile */
+            .apply-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-sidebar {
+                order: 2;
             }
         }
 
@@ -469,8 +534,19 @@ Based in Iowa, we take pride in creating opportunities for motivated individuals
             <h2>Schedule Your Intro Call</h2>
             <p>Use the calendar below to book a short introductory call with our hiring team. During this 15-minute conversation, we'll review the position details, travel expectations, and commission structure.</p>
 
-            <!-- Calendly inline widget begin -->
-            <div class="calendly-inline-widget" data-url="https://calendly.com/calebtd8702/intro-call" style="min-width:320px;height:700px;"></div>
+            <div class="apply-wrapper">
+                <div class="apply-main">
+                    <!-- Calendly inline widget begin -->
+                    <div class="calendly-inline-widget" data-url="https://calendly.com/calebtd8702/intro-call" style="min-width:320px;height:700px;"></div>
+                </div>
+
+                <div class="testimonial-sidebar">
+                    <div class="testimonial-content">
+                        <p class="testimonial-quote">Clear View gave me the opportunity to travel, learn, and grow while working with a team that pushes each other to succeed.</p>
+                        <p class="testimonial-author"><strong>Jake R.</strong>, Sales Representative</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
