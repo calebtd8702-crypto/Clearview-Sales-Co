@@ -253,6 +253,16 @@
             color: #427AA3;
             font-weight: 600;
         }
+
+        .testimonial-image img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 4px solid #427AA3;
+            display: block;
+        }
         
         /* ===================================
            RESPONSIVE: HEADER & HERO ONLY
@@ -484,18 +494,31 @@ Based in Iowa, we take pride in creating opportunities for motivated individuals
     <section class="bg-gray-light">
         <div class="section-content">
             <h2>How It Works</h2>
-            <div class="features">
-                <div class="feature">
-                    <h3>Paid Travel & Lodging</h3>
-                    <p>We cover approved flights and hotels so you can focus on results.</p>
+
+            <div class="apply-wrapper">
+                <div class="features">
+                    <div class="feature">
+                        <h3>Paid Travel & Lodging</h3>
+                        <p>We cover approved flights and hotels so you can focus on results.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Training</h3>
+                        <p>Role-plays and live coaching that build confidence fast.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Weekly Commission</h3>
+                        <p>Transparent plan. Fast payouts. Clear targets.</p>
+                    </div>
                 </div>
-                <div class="feature">
-                    <h3>Training</h3>
-                    <p>Role-plays and live coaching that build confidence fast.</p>
-                </div>
-                <div class="feature">
-                    <h3>Weekly Commission</h3>
-                    <p>Transparent plan. Fast payouts. Clear targets.</p>
+
+                <div class="testimonial-sidebar">
+                    <div class="testimonial-image">
+                        <img src="" alt="Jake R.">
+                    </div>
+                    <div class="testimonial-content">
+                        <p class="testimonial-quote">Before joining Clear View, I had never worked in sales. The team trained me from day one and showed me how to make real money by putting in the effort. It's been a game changer.</p>
+                        <p class="testimonial-author"><strong>Jake R.</strong>, Sales Representative</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -534,19 +557,8 @@ Based in Iowa, we take pride in creating opportunities for motivated individuals
             <h2>Schedule Your Intro Call</h2>
             <p>Use the calendar below to book a short introductory call with our hiring team. During this 15-minute conversation, we'll review the position details, travel expectations, and commission structure.</p>
 
-            <div class="apply-wrapper">
-                <div class="apply-main">
-                    <!-- Calendly inline widget begin -->
-                    <div class="calendly-inline-widget" data-url="https://calendly.com/calebtd8702/intro-call" style="min-width:320px;height:700px;"></div>
-                </div>
-
-                <div class="testimonial-sidebar">
-                    <div class="testimonial-content">
-                        <p class="testimonial-quote">Clear View gave me the opportunity to travel, learn, and grow while working with a team that pushes each other to succeed.</p>
-                        <p class="testimonial-author"><strong>Jake R.</strong>, Sales Representative</p>
-                    </div>
-                </div>
-            </div>
+            <!-- Calendly inline widget begin -->
+            <div class="calendly-inline-widget" data-url="https://calendly.com/calebtd8702/intro-call" style="min-width:320px;height:700px;"></div>
         </div>
     </section>
 
