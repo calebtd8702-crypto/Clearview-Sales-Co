@@ -16,7 +16,7 @@ export default function ApplyPage() {
   return (
     <main className="min-h-screen pt-20">
       {/* Hero */}
-      <section className="py-24 bg-gradient-to-br from-neon/10 to-white">
+      <section className="py-24 bg-gradient-to-br from-neon/10 to-bg-light">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -33,7 +33,7 @@ export default function ApplyPage() {
       </section>
 
       {/* Two Column: Calendly + Quick Form */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-bg-lighter">
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
             {/* Calendly */}
@@ -48,7 +48,7 @@ export default function ApplyPage() {
               <p className="text-gray-600 mb-8">
                 Book a 15-minute intro call with our team. We'll answer all your questions and walk you through next steps.
               </p>
-              <div className="bg-gray-50 rounded-2xl p-4">
+              <div className="bg-white rounded-2xl p-4 shadow-lg">
                 <CalendlyEmbed url="https://calendly.com/calebtd8702/intro-call" />
               </div>
             </motion.div>
@@ -158,7 +158,7 @@ export default function ApplyPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-bg-light">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -193,7 +193,7 @@ export default function ApplyPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-white p-6 rounded-xl border-2 border-gray-100"
+                  className="bg-white p-6 rounded-xl border-2 border-gray-100 shadow-md hover:shadow-lg transition-shadow"
                 >
                   <h3 className="text-lg font-bold mb-2">{faq.q}</h3>
                   <p className="text-gray-600">{faq.a}</p>

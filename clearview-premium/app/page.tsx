@@ -21,7 +21,7 @@ export default function HomePage() {
       <StatsSection />
 
       {/* How It Works */}
-      <section className="py-32 bg-white">
+      <section className="py-32 bg-bg-light">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

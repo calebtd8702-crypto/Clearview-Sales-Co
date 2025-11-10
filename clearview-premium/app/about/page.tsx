@@ -43,7 +43,7 @@ export default function AboutPage() {
       </section>
 
       {/* Our Story */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-bg-light">
         <div className="container-custom">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -117,7 +117,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-bg-lighter">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

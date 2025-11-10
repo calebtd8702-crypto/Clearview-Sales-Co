@@ -65,7 +65,7 @@ export default function OpportunityPage() {
   return (
     <main className="min-h-screen pt-20">
       {/* Hero */}
-      <section className="py-32 bg-gradient-to-br from-white to-gray-50">
+      <section className="py-32 bg-gradient-to-br from-bg-light to-bg-lighter">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -82,7 +82,7 @@ export default function OpportunityPage() {
       </section>
 
       {/* Benefits Grid */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-bg-lighter">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -161,7 +161,7 @@ export default function OpportunityPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-bg-light">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
