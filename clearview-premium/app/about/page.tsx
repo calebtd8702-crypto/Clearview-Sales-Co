@@ -11,7 +11,7 @@ export default function AboutPage() {
     },
     {
       title: 'People Over Numbers',
-      description: 'Success starts with taking care of our team. You're not a number here.',
+      description: 'Success starts with taking care of our team. You\'re not a number here.',
     },
     {
       title: 'Continuous Growth',
