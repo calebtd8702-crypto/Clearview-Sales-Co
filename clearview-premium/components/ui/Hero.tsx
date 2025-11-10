@@ -109,17 +109,21 @@ export default function Hero({ headline, subhead, primaryCTA, secondaryCTA }: He
             transition={{ duration: 1, delay: 1 }}
             className="absolute bottom-12 left-1/2 transform -translate-x-1/2"
           >
-            <motion.div
+            <motion.svg
               animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="w-6 h-10 border-2 border-white/50 rounded-full flex items-start justify-center p-2"
+              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+              className="w-8 h-8 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
             >
-              <motion.div
-                animate={{ y: [0, 12, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="w-1 h-3 bg-white/70 rounded-full"
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
               />
-            </motion.div>
+            </motion.svg>
           </motion.div>
         </div>
       </div>
