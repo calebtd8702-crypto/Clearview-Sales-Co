@@ -16,7 +16,7 @@ export default function Hero({ headline, subhead, primaryCTA, secondaryCTA }: He
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: 'url(https://i.imgur.com/9Cs7QZT.png)' }}
+        style={{ backgroundImage: 'url(https://i.imgur.com/jMl4eVC.png)' }}
       />
 
       {/* Gradient Overlay for readability */}
