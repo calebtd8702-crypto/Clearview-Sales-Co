@@ -9,9 +9,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        charcoal: '#1A1A1A',
-        neon: '#00FF9D',
-        'neon-hover': '#00CC7E',
+        charcoal: '#484848',
+        neon: '#427AA3',
+        'neon-hover': '#365F85',
+        'bg-light': '#dfedf5',
+        'bg-lighter': '#e7f1f8',
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
