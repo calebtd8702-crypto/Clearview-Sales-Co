@@ -1,0 +1,208 @@
+'use client'
+
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+import CalendlyEmbed from '@/components/ui/CalendlyEmbed'
+
+export default function ApplyPage() {
+  const [formSubmitted, setFormSubmitted] = useState(false)
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    // Here you would handle the form submission (send to API, etc.)
+    setFormSubmitted(true)
+  }
+
+  return (
+    <main className="min-h-screen pt-20">
+      {/* Hero */}
+      <section className="py-24 bg-gradient-to-br from-neon/10 to-white">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-4xl mx-auto text-center"
+          >
+            <h1 className="text-display-lg mb-6">Let's Get Started</h1>
+            <p className="text-2xl text-gray-600 leading-relaxed">
+              Schedule your intro call or fill out a quick application below.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Two Column: Calendly + Quick Form */}
+      <section className="py-16 bg-white">
+        <div className="container-custom">
+          <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            {/* Calendly */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <h2 className="text-3xl font-display font-bold mb-4">
+                Option 1: Schedule a Call
+              </h2>
+              <p className="text-gray-600 mb-8">
+                Book a 15-minute intro call with our team. We'll answer all your questions and walk you through next steps.
+              </p>
+              <div className="bg-gray-50 rounded-2xl p-4">
+                <CalendlyEmbed url="https://calendly.com/calebtd8702/intro-call" />
+              </div>
+            </motion.div>
+
+            {/* Quick Apply Form */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <h2 className="text-3xl font-display font-bold mb-4">
+                Option 2: Quick Apply
+              </h2>
+              <p className="text-gray-600 mb-8">
+                Fill out this quick form and we'll reach out within 24 hours.
+              </p>
+
+              {!formSubmitted ? (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-semibold mb-2">
+                      Full Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      required
+                      className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-neon focus:outline-none transition-colors"
+                      placeholder="John Doe"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-semibold mb-2">
+                      Email *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      required
+                      className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-neon focus:outline-none transition-colors"
+                      placeholder="john@example.com"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-semibold mb-2">
+                      Phone Number *
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      required
+                      className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-neon focus:outline-none transition-colors"
+                      placeholder="(123) 456-7890"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="position" className="block text-sm font-semibold mb-2">
+                      Position of Interest *
+                    </label>
+                    <select
+                      id="position"
+                      required
+                      className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-neon focus:outline-none transition-colors"
+                    >
+                      <option value="">Select a position</option>
+                      <option value="field-rep">Field Sales Representative</option>
+                      <option value="team-lead">Team Lead</option>
+                      <option value="not-sure">Not Sure</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label htmlFor="experience" className="block text-sm font-semibold mb-2">
+                      Previous Sales Experience
+                    </label>
+                    <textarea
+                      id="experience"
+                      rows={4}
+                      className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-neon focus:outline-none transition-colors"
+                      placeholder="Tell us about your background (optional)"
+                    />
+                  </div>
+
+                  <button type="submit" className="btn-primary w-full justify-center text-lg">
+                    Submit Application
+                  </button>
+                </form>
+              ) : (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="bg-neon/10 border-2 border-neon rounded-2xl p-8 text-center"
+                >
+                  <div className="text-6xl mb-4">✓</div>
+                  <h3 className="text-2xl font-display font-bold mb-2">Application Received!</h3>
+                  <p className="text-gray-600">
+                    We'll review your application and reach out within 24 hours.
+                  </p>
+                </motion.div>
+              )}
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24 bg-gray-50">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl mx-auto"
+          >
+            <h2 className="text-display-md text-center mb-12">Common Questions</h2>
+            <div className="space-y-6">
+              {[
+                {
+                  q: 'Do I need sales experience?',
+                  a: 'No. We train you from day one. Many of our top reps had zero sales experience when they started.',
+                },
+                {
+                  q: 'How much can I realistically earn?',
+                  a: 'It depends on your effort. Average reps make $2,000/week. Top performers make $3,000+/week.',
+                },
+                {
+                  q: 'What does the training look like?',
+                  a: 'Step-by-step coaching, role-plays, live feedback, and field training with experienced reps.',
+                },
+                {
+                  q: 'When do I get paid?',
+                  a: 'Weekly. Every week. Transparent commission structure with no hidden fees.',
+                },
+              ].map((faq, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="bg-white p-6 rounded-xl border-2 border-gray-100"
+                >
+                  <h3 className="text-lg font-bold mb-2">{faq.q}</h3>
+                  <p className="text-gray-600">{faq.a}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+    </main>
+  )
+}
