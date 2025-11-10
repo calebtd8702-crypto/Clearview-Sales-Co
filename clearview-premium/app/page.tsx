@@ -101,9 +101,9 @@ export default function HomePage() {
               },
               {
                 quote: "The training is unmatched. They don't just throw you out there - they teach you the exact system, practice with you, and support you every step. I'm making more than I ever did.",
-                author: 'Sarah K.',
+                author: 'Caleb D.',
                 role: 'Team Lead',
-                image: null,
+                image: 'https://i.imgur.com/jy2apzT.png',
               },
             ].map((testimonial, index) => (
               <motion.div
