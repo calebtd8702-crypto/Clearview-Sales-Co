@@ -42,7 +42,7 @@ export default function Navigation() {
                 {link.label}
               </Link>
             ))}
-            <Link href="/apply" className="btn-primary text-sm px-6 py-3">
+            <Link href="/apply" className="btn-primary text-sm px-6 py-3 !bg-bg-light !text-charcoal hover:!bg-white">
               Schedule Call
             </Link>
           </div>
@@ -102,7 +102,7 @@ export default function Navigation() {
               <Link
                 href="/apply"
                 onClick={() => setMobileMenuOpen(false)}
-                className="btn-primary w-full"
+                className="btn-primary w-full !bg-bg-light !text-charcoal hover:!bg-white"
               >
                 Schedule Call
               </Link>
