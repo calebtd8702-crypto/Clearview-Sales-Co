@@ -8,10 +8,6 @@
     --font-space: 'Space Grotesk', system-ui, sans-serif;
   }
 
-  * {
-    @apply border-border;
-  }
-
   html {
     @apply scroll-smooth;
   }
