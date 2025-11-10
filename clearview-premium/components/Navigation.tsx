@@ -18,15 +18,17 @@ export default function Navigation() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
-      className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-100"
+      className="fixed top-0 left-0 right-0 z-50 bg-charcoal shadow-lg"
     >
       <div className="container-custom">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 group">
-            <span className="text-2xl font-display font-bold tracking-tight text-charcoal group-hover:text-neon transition-colors duration-300">
-              CLEAR VIEW SALES CO.
-            </span>
+          <Link href="/" className="flex items-center group">
+            <img
+              src="/mikelogo.png"
+              alt="Clear View Sales Co."
+              className="h-10 md:h-12 w-auto transition-opacity duration-300 group-hover:opacity-80"
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -35,7 +37,7 @@ export default function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm font-semibold text-charcoal hover:text-neon transition-colors duration-200"
+                className="text-sm font-semibold text-bg-light hover:text-white transition-colors duration-200"
               >
                 {link.label}
               </Link>
@@ -48,7 +50,7 @@ export default function Navigation() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 text-charcoal"
+            className="md:hidden p-2 text-white"
             aria-label="Toggle menu"
           >
             <svg
@@ -84,7 +86,7 @@ export default function Navigation() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-t border-gray-100"
+            className="md:hidden bg-charcoal border-t border-gray-700"
           >
             <div className="container-custom py-6 space-y-4">
               {links.map((link) => (
@@ -92,7 +94,7 @@ export default function Navigation() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block text-lg font-semibold text-charcoal hover:text-neon transition-colors"
+                  className="block text-lg font-semibold text-bg-light hover:text-white transition-colors"
                 >
                   {link.label}
                 </Link>
