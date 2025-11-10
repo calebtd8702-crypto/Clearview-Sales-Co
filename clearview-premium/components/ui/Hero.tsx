@@ -78,7 +78,7 @@ export default function Hero({ headline, subhead, primaryCTA, secondaryCTA }: He
             transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
-            <Link href={primaryCTA.href} className="btn-primary">
+            <Link href={primaryCTA.href} className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold bg-charcoal text-white rounded-full hover:bg-gray-600 transition-all duration-300 hover:scale-105 hover:shadow-xl">
               {primaryCTA.text}
               <svg
                 className="ml-2 w-5 h-5"
@@ -96,7 +96,7 @@ export default function Hero({ headline, subhead, primaryCTA, secondaryCTA }: He
             </Link>
 
             {secondaryCTA && (
-              <Link href={secondaryCTA.href} className="btn-outline">
+              <Link href={secondaryCTA.href} className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold border-2 border-white text-white rounded-full hover:bg-white hover:text-charcoal transition-all duration-300 hover:scale-105">
                 {secondaryCTA.text}
               </Link>
             )}
