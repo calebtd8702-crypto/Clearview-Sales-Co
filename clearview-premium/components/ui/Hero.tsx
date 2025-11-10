@@ -12,13 +12,22 @@ interface HeroProps {
 
 export default function Hero({ headline, subhead, primaryCTA, secondaryCTA }: HeroProps) {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-white via-gray-50 to-white pt-20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: 'url(https://i.imgur.com/xwcURf0.png)' }}
+      />
+
+      {/* Gradient Overlay for readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-blue-900/30 via-blue-900/50 to-blue-900/70" />
+
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
           animate={{
             scale: [1, 1.2, 1],
-            opacity: [0.1, 0.15, 0.1],
+            opacity: [0.05, 0.1, 0.05],
           }}
           transition={{
             duration: 8,
@@ -30,7 +39,7 @@ export default function Hero({ headline, subhead, primaryCTA, secondaryCTA }: He
         <motion.div
           animate={{
             scale: [1, 1.3, 1],
-            opacity: [0.05, 0.1, 0.05],
+            opacity: [0.03, 0.06, 0.03],
           }}
           transition={{
             duration: 10,
@@ -38,7 +47,7 @@ export default function Hero({ headline, subhead, primaryCTA, secondaryCTA }: He
             ease: 'easeInOut',
             delay: 2,
           }}
-          className="absolute bottom-0 -left-1/4 w-1/2 h-1/2 bg-charcoal/5 rounded-full blur-3xl"
+          className="absolute bottom-0 -left-1/4 w-1/2 h-1/2 bg-white/5 rounded-full blur-3xl"
         />
       </div>
 
@@ -49,7 +58,7 @@ export default function Hero({ headline, subhead, primaryCTA, secondaryCTA }: He
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="text-display-xl md:text-[6rem] lg:text-[7rem] font-display font-bold mb-8 leading-none text-balance"
+            className="text-display-xl md:text-[6rem] lg:text-[7rem] font-display font-bold mb-8 leading-none text-balance text-white"
           >
             {headline}
           </motion.h1>
@@ -58,7 +67,7 @@ export default function Hero({ headline, subhead, primaryCTA, secondaryCTA }: He
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-            className="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl md:text-2xl text-white mb-12 max-w-3xl mx-auto leading-relaxed"
           >
             {subhead}
           </motion.p>
@@ -103,12 +112,12 @@ export default function Hero({ headline, subhead, primaryCTA, secondaryCTA }: He
             <motion.div
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
-              className="w-6 h-10 border-2 border-charcoal/30 rounded-full flex items-start justify-center p-2"
+              className="w-6 h-10 border-2 border-white/50 rounded-full flex items-start justify-center p-2"
             >
               <motion.div
                 animate={{ y: [0, 12, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
-                className="w-1 h-3 bg-charcoal/50 rounded-full"
+                className="w-1 h-3 bg-white/70 rounded-full"
               />
             </motion.div>
           </motion.div>
