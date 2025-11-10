@@ -97,11 +97,13 @@ export default function HomePage() {
                 quote: "Before joining Clear View, I had never worked in sales. The team trained me from day one and showed me that I can control how much money I make with my effort. It's been a game changer.",
                 author: 'Ben E.',
                 role: 'Sales Representative',
+                image: 'https://i.imgur.com/M07d5HX.png',
               },
               {
                 quote: "The training is unmatched. They don't just throw you out there - they teach you the exact system, practice with you, and support you every step. I'm making more than I ever did.",
                 author: 'Sarah K.',
                 role: 'Team Lead',
+                image: null,
               },
             ].map((testimonial, index) => (
               <motion.div
@@ -113,9 +115,18 @@ export default function HomePage() {
                 className="bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-white/10 hover:border-neon/50 transition-colors"
               >
                 <p className="text-lg italic mb-6 text-gray-300">"{testimonial.quote}"</p>
-                <div>
-                  <p className="font-semibold text-white">{testimonial.author}</p>
-                  <p className="text-sm text-gray-400">{testimonial.role}</p>
+                <div className="flex items-center gap-4">
+                  {testimonial.image && (
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.author}
+                      className="w-16 h-16 rounded-full object-cover border-2 border-neon/30"
+                    />
+                  )}
+                  <div>
+                    <p className="font-semibold text-white">{testimonial.author}</p>
+                    <p className="text-sm text-gray-400">{testimonial.role}</p>
+                  </div>
                 </div>
               </motion.div>
             ))}
