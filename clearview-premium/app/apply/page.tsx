@@ -2,12 +2,26 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { useRouter } from 'next/navigation'
 import CalendlyEmbed from '@/components/ui/CalendlyEmbed'
 
 export default function ApplyPage() {
+  const router = useRouter()
   const [formSubmitted, setFormSubmitted] = useState(false)
   const [experienceOption, setExperienceOption] = useState<'upload' | 'describe'>('describe')
   const [resumeFile, setResumeFile] = useState<File | null>(null)
+  const [selectedState, setSelectedState] = useState('')
+
+  const states = [
+    'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut',
+    'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa',
+    'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan',
+    'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
+    'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio',
+    'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota',
+    'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia',
+    'Wisconsin', 'Wyoming'
+  ]
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -18,6 +32,12 @@ export default function ApplyPage() {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       setResumeFile(e.target.files[0])
+    }
+  }
+
+  const handleViewRoles = () => {
+    if (selectedState) {
+      router.push(`/roles/${selectedState.toLowerCase().replace(/\s+/g, '-')}`)
     }
   }
 
@@ -36,6 +56,48 @@ export default function ApplyPage() {
             <p className="text-2xl text-gray-600 leading-relaxed">
               Schedule your intro call or fill out a quick application below.
             </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* View Roles by State */}
+      <section className="py-12 bg-white border-b border-gray-200">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="max-w-2xl mx-auto"
+          >
+            <div className="bg-gradient-to-br from-neon/5 to-bg-light p-8 rounded-2xl border-2 border-gray-200">
+              <h3 className="text-2xl font-display font-bold mb-3 text-center">
+                View Open Roles in Your Area
+              </h3>
+              <p className="text-gray-600 text-center mb-6">
+                See available positions in your state before applying.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <select
+                  value={selectedState}
+                  onChange={(e) => setSelectedState(e.target.value)}
+                  className="flex-1 px-4 py-3 rounded-lg bg-white text-gray-900 border-2 border-gray-300 focus:border-neon focus:outline-none transition-colors"
+                >
+                  <option value="">Select your state...</option>
+                  {states.map((state) => (
+                    <option key={state} value={state}>
+                      {state}
+                    </option>
+                  ))}
+                </select>
+                <button
+                  onClick={handleViewRoles}
+                  disabled={!selectedState}
+                  className="btn-primary px-8 py-3 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+                >
+                  View Roles
+                </button>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
