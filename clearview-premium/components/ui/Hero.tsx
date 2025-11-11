@@ -58,7 +58,7 @@ export default function Hero({ headline, subhead, primaryCTA, secondaryCTA }: He
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="text-display-xl md:text-[6rem] lg:text-[7rem] font-display font-bold mb-8 leading-none text-balance text-white"
+            className="text-4xl sm:text-5xl md:text-[6rem] lg:text-[7rem] font-display font-bold mb-6 md:mb-8 leading-tight md:leading-none text-balance text-white"
           >
             {headline}
           </motion.h1>
@@ -67,7 +67,7 @@ export default function Hero({ headline, subhead, primaryCTA, secondaryCTA }: He
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-            className="text-xl md:text-2xl text-white mb-12 max-w-3xl mx-auto leading-relaxed"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl text-white mb-8 md:mb-12 max-w-3xl mx-auto leading-relaxed px-4 sm:px-0"
           >
             {subhead}
           </motion.p>
@@ -76,12 +76,12 @@ export default function Hero({ headline, subhead, primaryCTA, secondaryCTA }: He
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4 sm:px-0"
           >
-            <Link href={primaryCTA.href} className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold bg-charcoal text-white rounded-full hover:bg-gray-600 transition-all duration-300 hover:scale-105 hover:shadow-xl">
+            <Link href={primaryCTA.href} className="inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold bg-charcoal text-white rounded-full hover:bg-gray-600 transition-all duration-300 hover:scale-105 hover:shadow-xl w-full sm:w-auto">
               {primaryCTA.text}
               <svg
-                className="ml-2 w-5 h-5"
+                className="ml-2 w-4 h-4 sm:w-5 sm:h-5"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -96,7 +96,7 @@ export default function Hero({ headline, subhead, primaryCTA, secondaryCTA }: He
             </Link>
 
             {secondaryCTA && (
-              <Link href={secondaryCTA.href} className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold border-2 border-white text-white rounded-full hover:bg-white hover:text-charcoal transition-all duration-300 hover:scale-105">
+              <Link href={secondaryCTA.href} className="inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold border-2 border-white text-white rounded-full hover:bg-white hover:text-charcoal transition-all duration-300 hover:scale-105 w-full sm:w-auto">
                 {secondaryCTA.text}
               </Link>
             )}
