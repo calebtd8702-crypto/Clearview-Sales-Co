@@ -32,13 +32,7 @@ export default function ApplyPage() {
     setIsSubmitting(true)
     setError('')
 
-    const formElement = e.currentTarget
-    const formData = new FormData(formElement)
-
-    // Add the resume file if uploaded
-    if (experienceOption === 'upload' && resumeFile) {
-      formData.append('resume', resumeFile)
-    }
+    const formData = new FormData(e.currentTarget)
 
     try {
       const response = await fetch(FORMSPREE_ENDPOINT, {
