@@ -6,11 +6,19 @@ import CalendlyEmbed from '@/components/ui/CalendlyEmbed'
 
 export default function ApplyPage() {
   const [formSubmitted, setFormSubmitted] = useState(false)
+  const [experienceOption, setExperienceOption] = useState<'upload' | 'describe'>('describe')
+  const [resumeFile, setResumeFile] = useState<File | null>(null)
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     // Here you would handle the form submission (send to API, etc.)
     setFormSubmitted(true)
+  }
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setResumeFile(e.target.files[0])
+    }
   }
 
   return (
@@ -124,15 +132,60 @@ export default function ApplyPage() {
                   </div>
 
                   <div>
-                    <label htmlFor="experience" className="block text-sm font-semibold mb-2">
-                      Previous Sales Experience
+                    <label className="block text-sm font-semibold mb-3">
+                      Sales Background
                     </label>
-                    <textarea
-                      id="experience"
-                      rows={4}
-                      className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-neon focus:outline-none transition-colors"
-                      placeholder="Tell us about your background (optional)"
-                    />
+                    <div className="flex gap-6 mb-4">
+                      <label className="flex items-center cursor-pointer">
+                        <input
+                          type="radio"
+                          name="experienceOption"
+                          value="describe"
+                          checked={experienceOption === 'describe'}
+                          onChange={() => setExperienceOption('describe')}
+                          className="w-4 h-4 text-neon focus:ring-neon focus:ring-2"
+                        />
+                        <span className="ml-2 text-gray-700">Describe Experience</span>
+                      </label>
+                      <label className="flex items-center cursor-pointer">
+                        <input
+                          type="radio"
+                          name="experienceOption"
+                          value="upload"
+                          checked={experienceOption === 'upload'}
+                          onChange={() => setExperienceOption('upload')}
+                          className="w-4 h-4 text-neon focus:ring-neon focus:ring-2"
+                        />
+                        <span className="ml-2 text-gray-700">Upload Resume</span>
+                      </label>
+                    </div>
+
+                    {experienceOption === 'describe' ? (
+                      <textarea
+                        id="experience"
+                        rows={4}
+                        className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-neon focus:outline-none transition-colors"
+                        placeholder="Tell us about your previous sales experience..."
+                      />
+                    ) : (
+                      <div>
+                        <input
+                          type="file"
+                          id="resume"
+                          accept=".pdf,.doc,.docx"
+                          onChange={handleFileChange}
+                          className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-neon focus:outline-none transition-colors file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-neon file:text-white file:cursor-pointer hover:file:bg-neon/90"
+                        />
+                        {resumeFile && (
+                          <p className="mt-2 text-sm text-gray-600">
+                            Selected: {resumeFile.name}
+                          </p>
+                        )}
+                        <p className="mt-2 text-xs text-gray-500">
+                          Accepted formats: PDF, DOC, DOCX
+                        </p>
+                      </div>
+                    )}
                   </div>
 
                   <button type="submit" className="btn-primary w-full justify-center text-lg">
