@@ -2,8 +2,29 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 export default function OpportunityPage() {
+  const router = useRouter()
+  const [selectedState, setSelectedState] = useState('')
+
+  const states = [
+    'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut',
+    'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa',
+    'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan',
+    'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
+    'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio',
+    'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota',
+    'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia',
+    'Wisconsin', 'Wyoming'
+  ]
+
+  const handleViewRoles = () => {
+    if (selectedState) {
+      router.push(`/roles/${selectedState.toLowerCase().replace(/\s+/g, '-')}`)
+    }
+  }
   const benefits = [
     {
       icon: (
@@ -154,7 +175,7 @@ export default function OpportunityPage() {
             <p className="text-xl text-gray-400">Choose your path.</p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-16">
             {roles.map((role, index) => (
               <motion.div
                 key={index}
@@ -181,6 +202,45 @@ export default function OpportunityPage() {
               </motion.div>
             ))}
           </div>
+
+          {/* View Roles by State */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-2xl mx-auto"
+          >
+            <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20">
+              <h3 className="text-2xl font-display font-bold mb-4 text-center">
+                View Roles in Your Area
+              </h3>
+              <p className="text-gray-300 text-center mb-6">
+                These positions are available nationwide. Select your state to see openings in your area.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <select
+                  value={selectedState}
+                  onChange={(e) => setSelectedState(e.target.value)}
+                  className="flex-1 px-4 py-3 rounded-lg bg-white text-gray-900 border-2 border-gray-300 focus:border-neon focus:outline-none transition-colors"
+                >
+                  <option value="">Select your state...</option>
+                  {states.map((state) => (
+                    <option key={state} value={state}>
+                      {state}
+                    </option>
+                  ))}
+                </select>
+                <button
+                  onClick={handleViewRoles}
+                  disabled={!selectedState}
+                  className="btn-primary px-8 py-3 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+                >
+                  View Roles
+                </button>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
