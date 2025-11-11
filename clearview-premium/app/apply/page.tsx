@@ -8,7 +8,7 @@ import CalendlyEmbed from '@/components/ui/CalendlyEmbed'
 export default function ApplyPage() {
   const router = useRouter()
   const [formSubmitted, setFormSubmitted] = useState(false)
-  const [experienceOption, setExperienceOption] = useState<'upload' | 'describe'>('describe')
+  const [experienceOption, setExperienceOption] = useState<'upload' | 'describe'>('upload')
   const [resumeFile, setResumeFile] = useState<File | null>(null)
   const [selectedState, setSelectedState] = useState('')
 
