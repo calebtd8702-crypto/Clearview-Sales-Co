@@ -8,9 +8,13 @@ import CalendlyEmbed from '@/components/ui/CalendlyEmbed'
 export default function ApplyPage() {
   const router = useRouter()
   const [formSubmitted, setFormSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState('')
   const [experienceOption, setExperienceOption] = useState<'upload' | 'describe'>('upload')
   const [resumeFile, setResumeFile] = useState<File | null>(null)
   const [selectedState, setSelectedState] = useState('')
+
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xgvrekar'
 
   const states = [
     'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut',
@@ -23,10 +27,39 @@ export default function ApplyPage() {
     'Wisconsin', 'Wyoming'
   ]
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    // Here you would handle the form submission (send to API, etc.)
-    setFormSubmitted(true)
+    setIsSubmitting(true)
+    setError('')
+
+    const formElement = e.currentTarget
+    const formData = new FormData(formElement)
+
+    // Add the resume file if uploaded
+    if (experienceOption === 'upload' && resumeFile) {
+      formData.append('resume', resumeFile)
+    }
+
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+
+      if (response.ok) {
+        setFormSubmitted(true)
+      } else {
+        const data = await response.json()
+        setError(data.error || 'Something went wrong. Please try again.')
+      }
+    } catch (err) {
+      setError('Failed to submit form. Please check your connection and try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -145,6 +178,7 @@ export default function ApplyPage() {
                     <input
                       type="text"
                       id="name"
+                      name="name"
                       required
                       className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-neon focus:outline-none transition-colors"
                       placeholder="John Doe"
@@ -158,6 +192,7 @@ export default function ApplyPage() {
                     <input
                       type="email"
                       id="email"
+                      name="email"
                       required
                       className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-neon focus:outline-none transition-colors"
                       placeholder="john@example.com"
@@ -171,6 +206,7 @@ export default function ApplyPage() {
                     <input
                       type="tel"
                       id="phone"
+                      name="phone"
                       required
                       className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-neon focus:outline-none transition-colors"
                       placeholder="(123) 456-7890"
@@ -183,6 +219,7 @@ export default function ApplyPage() {
                     </label>
                     <select
                       id="position"
+                      name="position"
                       required
                       className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-neon focus:outline-none transition-colors"
                     >
@@ -225,6 +262,7 @@ export default function ApplyPage() {
                     {experienceOption === 'describe' ? (
                       <textarea
                         id="experience"
+                        name="experience"
                         rows={4}
                         className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-neon focus:outline-none transition-colors"
                         placeholder="Tell us about your previous sales experience..."
@@ -234,6 +272,7 @@ export default function ApplyPage() {
                         <input
                           type="file"
                           id="resume"
+                          name="resume"
                           accept=".pdf,.doc,.docx"
                           onChange={handleFileChange}
                           className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-neon focus:outline-none transition-colors file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-neon file:text-white file:cursor-pointer hover:file:bg-neon/90"
@@ -250,8 +289,18 @@ export default function ApplyPage() {
                     )}
                   </div>
 
-                  <button type="submit" className="btn-primary w-full justify-center text-lg">
-                    Submit Application
+                  {error && (
+                    <div className="bg-red-50 border-2 border-red-200 text-red-700 px-4 py-3 rounded-lg">
+                      {error}
+                    </div>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="btn-primary w-full justify-center text-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? 'Submitting...' : 'Submit Application'}
                   </button>
                 </form>
               ) : (
