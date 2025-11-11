@@ -127,7 +127,7 @@ export default function OpportunityPage() {
       </section>
 
       {/* Benefits Grid */}
-      <section className="py-24 bg-bg-lighter">
+      <section className="py-24 bg-white">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
