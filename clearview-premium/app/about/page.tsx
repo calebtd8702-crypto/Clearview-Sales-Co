@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 
 export default function AboutPage() {
@@ -71,12 +72,14 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="aspect-square bg-gradient-to-br from-neon/20 to-charcoal/20 rounded-3xl"
+              className="aspect-square rounded-3xl overflow-hidden relative"
             >
-              {/* Placeholder for image */}
-              <div className="w-full h-full flex items-center justify-center text-6xl">
-                📍
-              </div>
+              <Image
+                src="https://i.imgur.com/W6ugBTq.png"
+                alt="Clear View Sales Co. Location"
+                fill
+                className="object-cover"
+              />
             </motion.div>
           </div>
         </div>
