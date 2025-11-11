@@ -20,6 +20,9 @@ export const metadata: Metadata = {
   title: 'CLEAR VIEW SALES CO. | Earn Based On How Hard You Work',
   description: 'ClearView trains you step by step. Weekly commissions. Top reps make $3K+ per week.',
   keywords: 'sales jobs, commission sales, field sales, earn money, sales training',
+  icons: {
+    icon: '/mikelogo.png',
+  },
   openGraph: {
     title: 'CLEAR VIEW SALES CO.',
     description: 'Earn based on how hard you work. Weekly commissions, comprehensive training.',
