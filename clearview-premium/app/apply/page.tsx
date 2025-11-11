@@ -54,7 +54,7 @@ export default function ApplyPage() {
           >
             <h1 className="text-display-lg mb-6">Let's Get Started</h1>
             <p className="text-2xl text-gray-600 leading-relaxed">
-              Schedule your intro call or fill out a quick application below.
+              Join our growing team with opportunities in all 50 states. Schedule your intro call or fill out a quick application below.
             </p>
           </motion.div>
         </div>

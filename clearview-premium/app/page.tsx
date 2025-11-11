@@ -12,7 +12,7 @@ export default function HomePage() {
       {/* Hero Section */}
       <Hero
         headline="Earn based on how hard you work."
-        subhead="ClearView trains you step by step. Weekly commissions. Top reps make $3K+ per week."
+        subhead="ClearView trains you step by step. Weekly commissions. Top reps make $3K+ per week. Now hiring nationwide across all 50 states."
         primaryCTA={{ text: 'Schedule Intro Call', href: '/apply' }}
         secondaryCTA={{ text: 'Apply Now', href: '/apply' }}
       />

@@ -59,10 +59,10 @@ export default function AboutPage() {
                   Founded in the heartland of Iowa, Clear View Sales Co. started with a simple belief: great sales teams are built on trust, training, and transparency.
                 </p>
                 <p>
-                  What began as a small operation has grown into a respected name in field sales, partnering with national brands to bring their products directly to customers across the Midwest and beyond.
+                  What began as a small operation has grown into a respected nationwide presence in field sales. We've expanded across all 50 states, partnering with national brands to bring their products directly to customers from coast to coast.
                 </p>
                 <p>
-                  We don't just hire reps—we train them, support them, and build careers with them.
+                  We don't just hire reps—we train them, support them, and build careers with them. Whether you're in California, Texas, Florida, New York, or anywhere in between, Clear View has opportunities for driven sales professionals.
                 </p>
               </div>
             </motion.div>

@@ -120,7 +120,7 @@ export default function OpportunityPage() {
           >
             <h1 className="text-display-lg mb-6">The Opportunity</h1>
             <p className="text-2xl text-gray-600 leading-relaxed">
-              A career where your effort directly determines your income. No caps, no limits.
+              A career where your effort directly determines your income. No caps, no limits. We're hiring across all 50 states—find opportunities in your area.
             </p>
           </motion.div>
         </div>
