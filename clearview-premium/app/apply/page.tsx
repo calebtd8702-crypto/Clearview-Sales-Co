@@ -9,7 +9,6 @@ export default function ApplyPage() {
   const router = useRouter()
   const [formSubmitted, setFormSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [error, setError] = useState('')
   const [experienceOption, setExperienceOption] = useState<'upload' | 'describe'>('upload')
   const [resumeFile, setResumeFile] = useState<File | null>(null)
   const [selectedState, setSelectedState] = useState('')
@@ -28,32 +27,8 @@ export default function ApplyPage() {
   ]
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+    // Let Formspree handle the submission naturally
     setIsSubmitting(true)
-    setError('')
-
-    const formData = new FormData(e.currentTarget)
-
-    try {
-      const response = await fetch(FORMSPREE_ENDPOINT, {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      })
-
-      if (response.ok) {
-        setFormSubmitted(true)
-      } else {
-        const data = await response.json()
-        setError(data.error || 'Something went wrong. Please try again.')
-      }
-    } catch (err) {
-      setError('Failed to submit form. Please check your connection and try again.')
-    } finally {
-      setIsSubmitting(false)
-    }
   }
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -164,7 +139,12 @@ export default function ApplyPage() {
               </p>
 
               {!formSubmitted ? (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form
+                  action={FORMSPREE_ENDPOINT}
+                  method="POST"
+                  onSubmit={handleSubmit}
+                  className="space-y-6"
+                >
                   <div>
                     <label htmlFor="name" className="block text-sm font-semibold mb-2">
                       Full Name *
@@ -282,12 +262,6 @@ export default function ApplyPage() {
                       </div>
                     )}
                   </div>
-
-                  {error && (
-                    <div className="bg-red-50 border-2 border-red-200 text-red-700 px-4 py-3 rounded-lg">
-                      {error}
-                    </div>
-                  )}
 
                   <button
                     type="submit"
